@@ -1,2 +1,2 @@
 # demo
-Demonstration projects used in our handbook (see devmate.software for more details)
+Demonstration projects used in our handbook (see [our website](https://www.devmate.software) for more details])
