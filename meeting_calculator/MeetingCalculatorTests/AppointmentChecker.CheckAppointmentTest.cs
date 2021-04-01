@@ -4,7 +4,7 @@
 * Test model: d7f4223f-fc6d-4a3b-9e1c-59c5de26af9a
 */
 
-namespace MeetingCalculatorTests
+namespace MeetingCalculatorTestsDemo
 {
 	using System;
 	using System.Collections.Generic;
@@ -14,6 +14,7 @@ namespace MeetingCalculatorTests
 	{
 		private static MeetingCalculator.AppointmentChecker MyCalendarFactroy()
 		{
+			//load my caladar form db. 
 			return new MeetingCalculator.AppointmentChecker(
 				new List<MeetingCalculator.MeetingAppointment>
 				{
@@ -29,29 +30,32 @@ namespace MeetingCalculatorTests
 		private static IEnumerable<TestCaseData> PositiveTests()
 		{
 			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 20, 0, 0), new DateTime(2020, 9, 18, 21, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 12, 30, 0), new DateTime(2020, 9, 18, 13, 0, 0)), true)
-				.SetName("p1")
+				.SetName("LunchBreakTrue")
 				.SetDescription("//LinkToJira //link to AzureDevopsRequirements");
-			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 12, 30, 0), new DateTime(2020, 9, 18, 13, 0, 0)), true)
-				.SetName("p2")
+			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 12, 0, 0), new DateTime(2020, 9, 18, 13, 0, 0), "Lunch with Bob"), true)
+				.SetName("LuchWBobTrue")
 				.SetDescription("");
 			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 20, 0, 0), new DateTime(2020, 9, 18, 21, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 13, 30, 0)), false)
-				.SetName("p3")
+				.SetName("LuchConflictFalse")
 				.SetDescription("");
 			yield return new TestCaseData(MyCalendarFactroy(), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 13, 30, 0)), true)
-				.SetName("1")
+				.SetName("NextDayTrue")
+				.SetDescription("");
+			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), false)
+				.SetName("MorningConflict")
 				.SetDescription("");
 		}
 
 		private static IEnumerable<TestCaseData> TestsThrowingException()
 		{
 			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 8, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 12, 30, 0), new DateTime(2020, 9, 18, 13, 0, 0)), typeof(Exception))
-				.SetName("n1")
+				.SetName("InvalidCalExcep")
 				.SetDescription("instance: invalidCalendarZeroTime");
 			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 20, 0, 0), new DateTime(2020, 9, 18, 21, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 13, 0, 0)), typeof(Exception))
-				.SetName("n2")
+				.SetName("InvalAppEvent")
 				.SetDescription("Meeting2check: invalidAppointmentTime");
-			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 30, 0), new DateTime(2020, 9, 18, 13, 0, 0)), typeof(Exception))
-				.SetName("n3")
+			yield return new TestCaseData(new MeetingCalculator.AppointmentChecker(new List<MeetingCalculator.MeetingAppointment> {new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 8, 0, 0), new DateTime(2020, 9, 18, 9, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 9, 0, 0), new DateTime(2020, 9, 18, 10, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 10, 0, 0), new DateTime(2020, 9, 18, 11, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 11, 0, 0), new DateTime(2020, 9, 18, 12, 0, 0)), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 0, 0), new DateTime(2020, 9, 18, 14, 0, 0))}), new MeetingCalculator.MeetingAppointment(new DateTime(2020, 9, 18, 13, 30, 0), new DateTime(2020, 9, 18, 13, 0, 0)), typeof(Exception))
+				.SetName("InvalidAppBackwards")
 				.SetDescription("Meeting2check: invalidAppointmentEndStart");
 		}
 
@@ -61,6 +65,7 @@ namespace MeetingCalculatorTests
 		{
 			Boolean actual = instance.CheckAppointment(Meeting2check);
 			Assert.AreEqual(expected, actual);
+			Assert.AreEqual(1, 1);
 		}
 
 		[Test]
@@ -76,18 +81,20 @@ namespace MeetingCalculatorTests
 WARNING: Modification of this comment will make it impossible to merge user-defined changes
 
 BEGIN_CODEGEN_DATA
-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
+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
+AAAA==
 END_CODEGEN_DATA
 */
