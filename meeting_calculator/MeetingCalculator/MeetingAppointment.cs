@@ -63,6 +63,7 @@ namespace MeetingCalculator
         {
 
         }
+        
 
         public override bool Equals(object obj)
         {

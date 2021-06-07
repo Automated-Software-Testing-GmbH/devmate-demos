@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MeetingCalculator
 {
+
     public class AppointmentChecker
     {
         List<MeetingAppointment> actualMeetingAppointments = null;
@@ -26,9 +27,14 @@ namespace MeetingCalculator
             return MeetingList.Contains(contains);
         }
 
+        public static int substract(int n, int m)
+        {
+            return (int)(n - m);
+        }
+
 
         /// <summary>
-        /// Checkes if the local calendar has still space for an new given appointment 
+        /// Checks if the local calendar has still space for an new given appointment 
         /// or if there is any kind of scheduling conflict. 
         /// </summary>
         /// <param name="Meeting2check">the new Meeting to check</param>
@@ -41,7 +47,7 @@ namespace MeetingCalculator
                 throw new Exception("Meeting2check can not be null");
             if (Meeting2check.StartTime.Ticks >= Meeting2check.EndTime.Ticks)
                 throw new Exception("Event or Backwards in time");
-
+             
 
             foreach (MeetingAppointment cur in CurrentCalenderEntries)
             {
@@ -63,6 +69,11 @@ namespace MeetingCalculator
             }
             return true;
 
+        }
+
+        public static double divide(double tt, double pp)
+        {
+            return tt / pp;
         }
 
         public int GiveMeTheLongMeetings(List<MeetingAppointment> MeetingList)
